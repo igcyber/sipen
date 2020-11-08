@@ -84,17 +84,17 @@
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Baru</label>
                                             <input class="form-control" type="text" placeholder="Nomor Baru Petugas..."
-                                            name="no_petugas" maxlength="6" onkeypress="return hanyaAngka(event)" required/>
+                                            name="no_petugas" maxlength="6" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Lama</label>
                                             <input class="form-control" type="text" placeholder="Nomor Lama Petugas..."
-                                            name="no_petugas_lama" maxlength="6" onkeypress="return hanyaAngka(event)" required/>
+                                            name="no_petugas_lama" maxlength="6" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nama Lengkap</label>
                                             <input class="form-control" type="text" placeholder="Nama Lengkap Petugas..."
-                                            name="nm_petugas" required/>
+                                            name="nm_petugas" autocomplete="off" required/>
                                         </div>
                                     </div>
 
@@ -102,16 +102,16 @@
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Hp</label>
                                             <input class="form-control" type="text" placeholder="Nomor HP Petugas..."
-                                            name="no_hp" maxlength="12" onkeypress="return hanyaAngka(event)" required/>
+                                            name="no_hp" maxlength="12" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Username</label>
-                                            <input class="form-control" type="text" placeholder="Nama Lengkap Petugas..."
-                                            name="username" required/>
+                                            <input class="form-control" type="text" placeholder="Username..."
+                                            name="username" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Password</label>
-                                            <input class="form-control" type="password" placeholder="Nama Lengkap Petugas..."
+                                            <input class="form-control" type="password" placeholder="Password..."
                                             name="password" required/>
                                         </div>                                        
                                         <div class="form-group col-md-4">

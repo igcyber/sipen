@@ -35,10 +35,10 @@
                     <div class="container-fluid mt-n10">
 
                         <div class="card mb-4">
-                            <div class="card-header">Daftar Petugas</div>
+                            <!-- <div class="card-header">Daftar Petugas</div> -->
                             <div class="card-body">
                                 <div class="datatable table-responsive">
-                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered table-hover datatab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th><p align="center">No</p></th>
@@ -89,6 +89,7 @@
             </div>
 <?php require_once("includes/foot.php"); ?>
 
+<!-- sweet allert -->
 <script>
    $('.btn-delete').on('click', function(e){
       e.preventDefault();
@@ -96,7 +97,7 @@
 
  Swal.fire({
   title: 'Apakah Yakin?',
-  text :'Ini Akan Menghapus Data Petugas.',
+  text :'Ini Akan Menghapus Data Petugas',
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
@@ -108,17 +109,16 @@
   }
 })
    })
- </script>
-  <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
 </script>
+<!-- sweet allert -->
+
+<!-- datatable -->
+<link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap4.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.datatab').DataTable();
+  } );
+</script>
+  <!-- datatable -->

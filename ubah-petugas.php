@@ -40,6 +40,7 @@ if (isset($_POST['ubah'])){
     $password=$_POST['password'];
     $role=$_POST['role'];
 
+    $hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
     $update = $pdo->prepare("UPDATE petugas SET no_petugas=:no_petugas,
                                                 no_petugas_lama=:no_petugas_lama,
                                                 nm_petugas=:nm_petugas,
@@ -53,7 +54,7 @@ if (isset($_POST['ubah'])){
     $update->bindParam(':nm_petugas',$nm_petugas);
     $update->bindParam(':no_hp',$no_hp);
     $update->bindParam(':username',$username);
-    $update->bindParam(':password',$password);
+    $update->bindParam(':password',$hash);
     $update->bindParam(':role',$role);
     $update->execute();
     echo "<script>location.href='petugas.php'</script>";
@@ -90,17 +91,17 @@ if (isset($_POST['ubah'])){
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Baru</label>
                                             <input class="form-control" type="text" value="<?php echo $no_petugas_db; ?>"
-                                            name="no_petugas" maxlength="6" onkeypress="return hanyaAngka(event)" required/>
+                                            name="no_petugas" maxlength="6" autocomplete="off" onkeypress="return hanyaAngka(event)" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Lama</label>
                                             <input class="form-control" type="text" value="<?php echo $no_petugas_lama_db; ?>"
-                                            name="no_petugas_lama" maxlength="6" onkeypress="return hanyaAngka(event)" required/>
+                                            name="no_petugas_lama" maxlength="6" autocomplete="off" onkeypress="return hanyaAngka(event)" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nama Lengkap</label>
                                             <input class="form-control" type="text" value="<?php echo $nm_petugas_db; ?>"
-                                            name="nm_petugas" required/>
+                                            name="nm_petugas" autocomplete="off" required/>
                                         </div>
                                     </div>
 
@@ -108,12 +109,12 @@ if (isset($_POST['ubah'])){
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Hp</label>
                                             <input class="form-control" type="text" value="<?php echo $no_hp_db; ?>"
-                                            name="no_hp" maxlength="12" onkeypress="return hanyaAngka(event)" required/>
+                                            name="no_hp" maxlength="12" autocomplete="off" onkeypress="return hanyaAngka(event)" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Username</label>
                                             <input class="form-control" type="text" value="<?php echo $username_db?>"
-                                            name="username" required/>
+                                            name="username" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Password</label>
