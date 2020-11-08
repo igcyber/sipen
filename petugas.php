@@ -1,5 +1,5 @@
 <?php
-    $current_page = "Pelanggan";
+    $current_page = "Petugas";
 ?>
 <?php
     require_once("includes/head.php");
@@ -14,20 +14,14 @@
                             <div class="page-header-content d-flex align-items-center justify-content-between text-white">
                                 <h1 class="page-header-title my-2">
                                     <div class="page-header-icon"><i class="fas fa-user-tag"></i></div>
-                                    <span>Daftar Pelanggan</span>
+                                    <span>Daftar Petugas</span>
                                 </h1>
                                 <a href="index.php" title="Beranda" class="btn btn-white">
                                     <div class="page-header-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 </a>
                             </div>
-                                <a href="tambah-pelanggan.php" title="Tambah Pelanggan Baru" class="btn btn-white my-2">
+                                <a href="tambah-petugas.php" title="Tambah Petugas Baru" class="btn btn-white my-2">
                                     <div class="page-header-icon"><i class="fas fa-user-plus"></i></div>
-                                </a>
-                                <a href="tambah-unit.php" title="Tambah Unit Baru" class="btn btn-white my-2">
-                                    <div class="page-header-icon"><i class="far fa-building"></i></div>
-                                </a>
-                                <a href="tambah-kelompok.php" title="Tambah Kelompok Baru" class="btn btn-white my-2">
-                                    <div class="page-header-icon"><i class="fas fa-users"></i></div>
                                 </a>
                         </div>
                     </div>

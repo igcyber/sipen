@@ -1,6 +1,10 @@
-<?php require_once("includes/head.php"); ?>
-       <?php require_once("includes/top-nav.php") ?>
-
+<?php
+    $current_page = "Beranda";
+?>
+<?php
+    require_once("includes/head.php");
+    require_once("includes/top-nav.php");
+?>
         <!--Content Container-->
         <div id="layoutSidenav_content">
             <main>
@@ -9,7 +13,7 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title my-2">
                                 <div class="page-header-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                <span>Dashboard</span>
+                                <span>Beranda</span>
                             </h1>
                         </div>
                     </div>
@@ -27,7 +31,7 @@
                                 <p>32</p>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="pelanggan.php">Lihat Detil</a>
+                                <a class="small text-white stretched-link" href="pelanggan.php">Lihat Detail</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
@@ -35,11 +39,11 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-warning text-white mb-4">
                             <div class="card-body d-flex align-items-center justify-content-between">
-                                <p>Comments</p>
+                                <p>Petugas</p>
                                 <p>32</p>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
+                                <a class="small text-white stretched-link" href="petugas.php">Lihat Detail</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>

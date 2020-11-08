@@ -19,26 +19,28 @@
                         <div class="card mb-4">
                             <div class="card-header"></div>
                             <div class="card-body">
-                                <form>
+                                <form action="" method ="POST" >
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="post-title">Nomor Rekening Baru</label>
-                                            <input class="form-control" type="text" placeholder="Nomor Rekening..." />
+                                            <input class="form-control" type="text" placeholder="Nomor Rekening Baru..."
+                                            name="rek_baru" required/>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="post-title">Nomor Rekening Lama</label>
-                                            <input class="form-control" type="text" placeholder="Nomor Rekening..." />
+                                            <input class="form-control" type="text" placeholder="Nomor Rekening Lama..."
+                                            name="rek_lama" required/>
                                         </div>
                                     </div>
-
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="post-title">Nama Lengkap Pelanggan</label>
-                                            <input class="form-control" type="text" placeholder="Nama Lengkap..." />
+                                            <input class="form-control" type="text" placeholder="Nama Lengkap..."
+                                            name="nm_pelanggan" required/>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Unit Pelayanan</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="id_unit">
                                                 <option disabled selected>Pilih Wilayah</option>
                                                 <option>Draft</option>
                                             </select>

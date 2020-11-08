@@ -40,7 +40,7 @@
                                     ':username' => $username,
                                     ':nm_petugas' => $nm_petugas,
                                     ':password' => $hash,
-                                    ':role' => 'Petugas'
+                                    ':role' => 'Admin'
                                 ]);
                                 $success = "Akun Berhasil Dibuat";
                             }
