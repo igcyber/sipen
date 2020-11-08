@@ -14,6 +14,7 @@
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script src="https://kit.fontawesome.com/5a9d093c6d.js" crossorigin="anonymous"></script>
         <script data-search-pseudo-elements defer src="js/all.min.js"></script>
+        <script src="includes/sweetalert2.all.min.js"></script>
     </head>
 <body class="nav-fixed">
 
