@@ -4,7 +4,13 @@
 <?php
     require_once("includes/head.php");
     require_once("includes/top-nav.php");
+
+    error_reporting(0);
+    $id = $_GET['id'];
+    $delete = $pdo->prepare("DELETE FROM petugas WHERE id=".$id);
+    $delete->execute();
 ?>
+
 
         <!--Content Container-->
         <div id="layoutSidenav_content">
@@ -29,41 +35,49 @@
                     <div class="container-fluid mt-n10">
 
                         <div class="card mb-4">
-                            <div class="card-header">All Pages</div>
+                            <!-- <div class="card-header">Daftar Petugas</div> -->
                             <div class="card-body">
                                 <div class="datatable table-responsive">
-                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered table-hover datatab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Page Title</th>
-                                                <th>Page Details</th>
-                                                <th>Views</th>
-                                                <th>Created By</th>
-                                                <th>Status</th>
-                                                <th>Pilihan</th>
+                                                <th><p align="center">No</p></th>
+                                                <th><p align="center">No Petugas Baru</p></th>
+                                                <th><p align="center">No Petugas Lama</p></th>
+                                                <th><p align="center">Nama Petugas</p></th>
+                                                <th><p align="center">No HP</p></th>
+                                                <th><p align="center">Username</p></th>
+                                                <th><p align="center">Hak Akses</p></th>
+                                                <th><p align="center">Aksi</p></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php 
+                                        $no=1;
+                                        $select=$pdo->prepare("SELECT * FROM petugas ORDER BY role ASC");
+                                        $select->execute();
+                                        while($row=$select->fetch(PDO::FETCH_OBJ)){
+                                        ?>
                                             <tr>
-                                                <td>1</td>
+                                                <td><p align="center"><?php echo $no++; ?></p></td>
+                                                <td><p align="center"><?php echo $row->no_petugas; ?></p></td>
+                                                <td><p align="center"><?php echo $row->no_petugas_lama; ?></p></td>                                                </td>
+                                                <td><p align="center"><?php echo $row->nm_petugas; ?></p></td>
+                                                <td><p align="center"><?php echo $row->no_hp; ?></p></td>
+                                                <td><p align="center"><?php echo $row->username; ?></p></td>
                                                 <td>
-                                                    <a href="#">
-                                                        Lifestyle
-                                                    </a>
+                                                    <p align="center"><?php echo $row->role; ?></p>
+                                                    
                                                 </td>
-                                                <td>Details</td>
-                                                <td>61</td>
-                                                <td>Md. A. Barik</td>
-                                                <td>
-                                                    <div class="badge badge-success">Published
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></button>
-                                                    <button class="btn btn-red btn-sm btn-icon"><i class="fas fa-trash"></i></button>
+                                                <td><p align="center">
+                                                    <a href="ubah-petugas.php?id=<?php echo $row->id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
+
+                                                    <a href="petugas.php?id=<?php echo $row->id ?>" 
+                                                    class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
+                                                    </p>
                                                 </td>
                                             </tr>
+                                        <?php }?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -74,3 +88,37 @@
                 </main>
             </div>
 <?php require_once("includes/foot.php"); ?>
+
+<!-- sweet allert -->
+<script>
+   $('.btn-delete').on('click', function(e){
+      e.preventDefault();
+      const href =$(this).attr('href')
+
+ Swal.fire({
+  title: 'Apakah Yakin?',
+  text :'Ini Akan Menghapus Data Petugas',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ya, hapus!'
+}).then((result) => {
+  if (result.value) {
+      document.location.href=href;
+  }
+})
+   })
+</script>
+<!-- sweet allert -->
+
+<!-- datatable -->
+<link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/dataTables.bootstrap4.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.datatab').DataTable();
+  } );
+</script>
+  <!-- datatable -->
