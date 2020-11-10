@@ -49,7 +49,7 @@ if (isset($_POST['ubah'])){
                                                 password=:password,
                                                 role=:role
                             WHERE id=$id");
-    $update->bindParam(':no_petugas',$nopetugas);
+    $update->bindParam(':no_petugas',$no_petugas);
     $update->bindParam(':no_petugas_lama',$no_petugas_lama);
     $update->bindParam(':nm_petugas',$nm_petugas);
     $update->bindParam(':no_hp',$no_hp);
