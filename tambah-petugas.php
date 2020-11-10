@@ -84,12 +84,12 @@
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Baru</label>
                                             <input class="form-control" type="text" placeholder="Nomor Baru Petugas..."
-                                            name="no_petugas" maxlength="6" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
+                                            name="no_petugas" maxlength="7" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nomor Lama</label>
                                             <input class="form-control" type="text" placeholder="Nomor Lama Petugas..."
-                                            name="no_petugas_lama" maxlength="6" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
+                                            name="no_petugas_lama" maxlength="7" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="post-title">Nama Lengkap</label>
