@@ -34,12 +34,6 @@
                         <?php
                             if(isset($_POST['submit'])){
                                 $no_petugas = trim($_POST['no_petugas']);
-                                $no_petugas_lama = trim($_POST['no_petugas_lama']);
-                                $nm_petugas = trim($_POST['nm_petugas']);
-                                $no_hp = trim($_POST['no_hp']);
-                                $username = trim($_POST['username']); 
-                                $password = trim($_POST['password']);
-                                $role = trim($_POST['role']);
 
                                 $check = "SELECT * FROM petugas WHERE no_petugas = :no_petugas";
                                 $res = $pdo->prepare($check);
@@ -50,8 +44,16 @@
                                 if($countName != 0){
                                     $error_name = "Petugas Ini Sudah Ada";
                                 }
+
+                                $no_petugas_lama = trim($_POST['no_petugas_lama']);
+                                $nm_petugas = trim($_POST['nm_petugas']);
+                                $no_hp = trim($_POST['no_hp']);
+                                $username = trim($_POST['username']);
+                                $password = trim($_POST['password']);
+                                $role = trim($_POST['role']);
+
                                 $hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
-                                $sql = "INSERT INTO petugas(no_petugas,no_petugas_lama,nm_petugas,no_hp,username,password,role) 
+                                $sql = "INSERT INTO petugas(no_petugas,no_petugas_lama,nm_petugas,no_hp,username,password,role)
                                 VALUES(:no_petugas,:no_petugas_lama,:nm_petugas,:no_hp,:username,:password,:role)";
                                 $res = $pdo->prepare($sql);
                                 $res->execute([
@@ -113,12 +115,12 @@
                                             <label for="post-title">Password</label>
                                             <input class="form-control" type="password" placeholder="Password..."
                                             name="password" required/>
-                                        </div>                                        
+                                        </div>
                                         <div class="form-group col-md-4">
                                             <label>Pilih Hak Akses</label>
                                             <select name="role" class="form-control">
                                                 <option value="Admin">Admin</option>
-                                                <option value="Petugas Lapangan">Petugas Lapangan</option>
+                                                <option selected value="Petugas Lapangan">Petugas Lapangan</option>
                                             </select>
                                         </div>
                                     </div>
