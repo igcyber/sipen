@@ -75,9 +75,9 @@
                                                     <td><p align="center"><?php echo $row->unit_id; ?></p></td>
                                                     <td><p align="center"><?php echo $row->alamat; ?></p></td>
                                                     <td><p align="center"><?php echo $row->status; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_status; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($row->tgl_status)); ?></p></td>
                                                     <td><p align="center"><?php echo $row->hasil_test; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_hasil_test; ?></p></td>                                                   
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($row->tgl_hasil_test)); ?></p></td>                                                   
                                                     <td>
                                                         <p align="center">
                                                         <a href="ubah-petugas.php?id=<?php echo $row->id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>

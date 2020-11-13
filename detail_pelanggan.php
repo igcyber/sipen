@@ -46,6 +46,7 @@
                                     ?>
                                         <div><p align="center">
                                             <img src="foto_rumah/<?php echo $row->foto_rumah ?>" alt="Rumah Pelanggan" style="width: 176px; height: 190px;" class="img-responsive">
+                                            <p align="center"><a href="foto_rumah/<?php echo $row->foto_rumah ?>" target="_blank" class="btn btn-primary btn-sm" download>Download Foto</p></a>
                                             </p>
                                         </div>
                                         <div>
@@ -75,9 +76,9 @@
                                                     <td><p align="center"><?php echo $row->kelurahan; ?></p></td>
                                                     <td><p align="center"><?php echo $row->kecamatan; ?></p></td>
                                                     <td><p align="center"><?php echo $row->status; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_status; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($row->tgl_status)); ?></p></td>
                                                     <td><p align="center"><?php echo $row->hasil_test; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_hasil_test; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($row->tgl_hasil_test)); ?></p></td>
                                                     <td><p align="center"><?php echo $row->kelompok_id; ?></p></td>
                                                     <td><p align="center"><?php echo $row->petugas_id; ?></p></td>
                                             </tr>

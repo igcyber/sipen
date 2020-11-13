@@ -1,5 +1,11 @@
 <?php require_once("includes/head.php"); ?>
-       <?php require_once("includes/top-nav.php") ?>
+       <?php require_once("includes/top-nav.php"); ?>
+
+<?php 
+    //  Settingan waktu indonesia
+       date_default_timezone_set('Asia/Makassar');
+    // Settingan waktu indonesia
+?>
 
 <!-- Hanya Angka -->
         <script>
@@ -32,8 +38,12 @@
         $petugas_id = $_POST['petugas_id'];
         $foto_rumah = $_FILES['foto_rumah']['name'];
         $foto_rumah_tmp = $_FILES['foto_rumah']['tmp_name'];
-        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}");
+        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}","$image_size >= 2024");
 
+        // if ($image_size >= 2024) {
+        //     $message = 'Maaf, size tidak dapat lebih dari 20 MB. Silahkan upload ke googledrive atau media upload lainnya.'; 
+        //     echo '<script type="text/javascript">alert("'.$message.'");</script>'; 
+        // }
         $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
         VALUES(:rek_baru,:rek_lama,:nm_pelanggan,:unit_id,:alamat,:kelurahan,:kecamatan,:kelompok_id,:status,:tgl_status,:hasil_test,:tgl_hasil_test,:petugas_id,:foto_rumah)";
         $res = $pdo->prepare($sql);
@@ -199,6 +209,7 @@
                                     <div class="form-group col-md-6">
                                         <label>Foto Rumah Pelanggan</label>
                                         <input type="file" class="form-control" name="foto_rumah">
+                                        <p>*max file 2mb</p>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Simpan</button>
