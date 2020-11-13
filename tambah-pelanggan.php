@@ -32,7 +32,7 @@
         $petugas_id = $_POST['petugas_id'];
         $foto_rumah = $_FILES['foto_rumah']['name'];
         $foto_rumah_tmp = $_FILES['foto_rumah']['tmp_name'];
-        move_uploaded_file("{$foto_rumah_tmp}","../assets/foto/{$foto_rumah}");
+        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}");
 
         $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
         VALUES(:rek_baru,:rek_lama,:nm_pelanggan,:unit_id,:alamat,:kelurahan,:kecamatan,:kelompok_id,:status,:tgl_status,:hasil_test,:tgl_hasil_test,:petugas_id,:foto_rumah)";
