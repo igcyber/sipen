@@ -7,15 +7,15 @@
 ?>
 
 <!-- Hanya Angka -->
-        <script>
-            function hanyaAngka(evt){
-                var charCode = (evt.which) ? evt.which : event.keyCode
-                if (charCode > 31 && (charCode <48 || charCode > 57))
+<script>
+    function hanyaAngka(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode <48 || charCode > 57))
 
-                    return false;
-                    return true;
-                }
-		</script>
+            return false;
+            return true;
+        }
+</script>
 <!-- Hanya Angka -->
 
        <div id="layoutSidenav_content">
@@ -34,17 +34,6 @@
                         <?php
                             if(isset($_POST['submit'])){
                                 $no_petugas = trim($_POST['no_petugas']);
-
-                                $check = "SELECT * FROM petugas WHERE no_petugas = :no_petugas";
-                                $res = $pdo->prepare($check);
-                                $res->execute([
-                                    ':no_petugas' => $no_petugas
-                                ]);
-                                $countName = $res->rowCount();
-                                if($countName != 0){
-                                    $error_name = "Petugas Ini Sudah Ada";
-                                }
-
                                 $no_petugas_lama = trim($_POST['no_petugas_lama']);
                                 $nm_petugas = trim($_POST['nm_petugas']);
                                 $no_hp = trim($_POST['no_hp']);
@@ -52,20 +41,35 @@
                                 $password = trim($_POST['password']);
                                 $role = trim($_POST['role']);
 
-                                $hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
-                                $sql = "INSERT INTO petugas(no_petugas,no_petugas_lama,nm_petugas,no_hp,username,password,role)
-                                VALUES(:no_petugas,:no_petugas_lama,:nm_petugas,:no_hp,:username,:password,:role)";
-                                $res = $pdo->prepare($sql);
-                                $res->execute([
-                                    ':no_petugas' => $no_petugas,
-                                    ':no_petugas_lama' => $no_petugas_lama,
-                                    ':nm_petugas' => $nm_petugas,
-                                    ':no_hp' => $no_hp,
-                                    ':username' => $username,
-                                    ':password' => $hash,
-                                    ':role' => $role
-                                ]);
-                                $success = "Petugas Berhasil Ditambah";
+                                if (isset($_POST['no_petugas'])){
+                                $select=$pdo->prepare("SELECT no_petugas FROM petugas WHERE no_petugas='$no_petugas'");
+                                $select->execute();
+                                if ($select->rowCount() > 0) {
+                                    echo '<script type="text/javascript">
+                                    jQuery(function validation(){
+                                      Swal.fire("Peringatan!","No Petugas Sudah Ada", "warning", {
+                                        button: "Continue",
+                                      });
+                                    });
+                                    </script>';
+                                }
+                                else{      
+                                    $hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
+                                    $sql = "INSERT INTO petugas(no_petugas,no_petugas_lama,nm_petugas,no_hp,username,password,role)
+                                    VALUES(:no_petugas,:no_petugas_lama,:nm_petugas,:no_hp,:username,:password,:role)";
+                                    $res = $pdo->prepare($sql);
+                                    $res->execute([
+                                        ':no_petugas' => $no_petugas,
+                                        ':no_petugas_lama' => $no_petugas_lama,
+                                        ':nm_petugas' => $nm_petugas,
+                                        ':no_hp' => $no_hp,
+                                        ':username' => $username,
+                                        ':password' => $hash,
+                                        ':role' => $role
+                                    ]);
+                                    $success = "Petugas Berhasil Ditambah";
+                                    }
+                                }
                             }
                         ?>
 
@@ -75,9 +79,7 @@
                             <div class="card-header"></div>
                             <div class="card-body">
                                 <?php
-                                    if(isset($error_name)){
-                                        echo "<p class='alert alert-danger'>{$error_name}</p>";
-                                    }else if(isset($success)){
+                                    if(isset($success)){
                                         echo "<p class='alert alert-success'>{$success}</p>";
                                     }
                                 ?>
@@ -136,3 +138,19 @@
                 </main>
             </div>
 <?php require_once("includes/foot.php"); ?>
+
+<script>
+ Swal.fire({
+  title: 'Apakah Yakin?',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ya, hapus!'
+}).then((result) => {
+  if (result.value) {
+      document.location.href=href;
+  }
+)
+   })
+ </script>
