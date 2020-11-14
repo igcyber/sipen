@@ -52,7 +52,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
+                                        <?php
                                         $no=1;
                                         $select=$pdo->prepare("SELECT * FROM petugas ORDER BY role ASC");
                                         $select->execute();
@@ -67,12 +67,12 @@
                                                 <td><p align="center"><?php echo $row->username; ?></p></td>
                                                 <td>
                                                     <p align="center"><?php echo $row->role; ?></p>
-                                                    
+
                                                 </td>
                                                 <td><p align="center">
                                                     <a href="ubah-petugas.php?id=<?php echo $row->id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
 
-                                                    <a href="petugas.php?id=<?php echo $row->id ?>" 
+                                                    <a href="petugas.php?id=<?php echo $row->id ?>"
                                                     class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
                                                     </p>
                                                 </td>

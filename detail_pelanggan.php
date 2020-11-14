@@ -1,16 +1,10 @@
 <?php
-    $current_page = "Pelanggan";
+    $current_page = "Detail Pelanggan";
 ?>
 <?php
     require_once("includes/head.php");
     require_once("includes/top-nav.php");
-?>
 
-<?php
-    require_once("includes/head.php");
-    require_once("includes/top-nav.php");
-
-    error_reporting(0);
     $id = $_GET['id'];
     $delete = $pdo->prepare("DELETE FROM petugas WHERE id=".$id);
     $delete->execute();
@@ -28,7 +22,7 @@
                                 <a href="index.php" title="Beranda" class="btn btn-white">
                                     <div class="page-header-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 </a>
-                            </div>                                
+                            </div>
                         </div>
                     </div>
                     <!--Table-->
@@ -40,49 +34,95 @@
                                 <a href="pelanggan.php" class="btn btn-secondary">Kembali</a>
                                     <?php
                                         $id=$_GET['id'];
-                                        $select=$pdo->prepare("SELECT * FROM pelanggan WHERE id=$id");
-                                        $select->execute();
-                                        while($row=$select->fetch(PDO::FETCH_OBJ)){
+                                        $sql=$pdo->prepare("SELECT * FROM pelanggan WHERE id=$id");
+                                        $sql->execute();
+                                        while($pelanggan = $sql->fetch(PDO::FETCH_ASSOC)){
+                                            $rek_baru = $pelanggan['rek_baru'];
+                                            $rek_lama = $pelanggan['rek_lama'];
+                                            $nm_pelanggan = $pelanggan['nm_pelanggan'];
+
+                                            //Mengambil Nama Wilayah Dari Tabel Unit
+                                            $unit_id = $pelanggan['unit_id'];
+                                            $sql_unit = "SELECT * FROM unit  WHERE id = :id";
+                                            $res_unit = $pdo->prepare($sql_unit);
+                                            $res_unit->execute([':id'=>$unit_id]);
+                                            $unit = $res_unit->fetch(PDO::FETCH_ASSOC);
+                                            $unit_nm = $unit['nm_wilayah'];
+
+                                            $alamat = $pelanggan['alamat'];
+                                            $kelurahan = $pelanggan['kelurahan'];
+                                            $kecamatan = $pelanggan['kecamatan'];
+
+                                            //Mengambil Nama & Kode Kelompok Dari Tabel Kelompok
+                                            $kelompok_id = $pelanggan['kelompok_id'];
+                                            $sql_kelompok = "SELECT * FROM kelompok WHERE id = :id";
+                                            $res_kelompok = $pdo->prepare($sql_kelompok);
+                                            $res_kelompok->execute([':id'=>$kelompok_id]);
+                                            $kelompok = $res_kelompok->fetch(PDO::FETCH_ASSOC);
+                                            $kd_kelompok = $kelompok['kd_kelompok'];
+                                            $nm_kelompok = $kelompok['nm_kelompok'];
+
+                                            $status = $pelanggan['status'];
+                                            $tgl_status = $pelanggan['tgl_status'];
+                                            $hasil_test = $pelanggan['hasil_test'];
+                                            $tgl_hasil_test = $pelanggan['tgl_hasil_test'];
+
+                                            //Mengambil Nama & Nomor Petugas Dari Tabel Petugas
+                                            $petugas_id = $pelanggan['petugas_id'];
+                                            $sql_petugas = "SELECT * FROM petugas WHERE id = :id";
+                                            $res_petugas = $pdo->prepare($sql_petugas);
+                                            $res_petugas->execute([':id'=>$petugas_id]);
+                                            $petugas = $res_petugas->fetch(PDO::FETCH_ASSOC);
+                                            $no_petugas = $petugas['no_petugas'];
+                                            $no_petugas_lama = $petugas['no_petugas_lama'];
+                                            $nm_petugas = $petugas['nm_petugas'];
+
+                                            $foto = $pelanggan['foto_rumah'];
+
                                     ?>
                                         <div><p align="center">
-                                            <img src="foto_rumah/<?php echo $row->foto_rumah ?>" alt="Rumah Pelanggan" style="width: 176px; height: 190px;" class="img-responsive">
+                                            <img src="foto_rumah/<?php echo $foto ?>" alt="Rumah Pelanggan" style="width: 176px; height: 190px;" class="img-responsive">
                                             </p>
                                         </div>
                                         <div>
-                                        <table class="table table-bordered table-hover" id="example1" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th><p align="center">Rekening Pelanggan</p></th>
-                                                <th><p align="center">Nama Pelanggan</p></th>
-                                                <th><p align="center">Unit Pelayanan</p></th>
-                                                <th><p align="center">Alamat Pelanggan</p></th>
-                                                <th><p align="center">Kelurahan</p></th>
-                                                <th><p align="center">Kecamatan</p></th>
-                                                <th><p align="center">Status</p></th>
-                                                <th><p align="center">Tanggal Status</p></th>
-                                                <th><p align="center">Hasil Test Meteran</p></th>
-                                                <th><p align="center">Tanggal Hasil Test</p></th>
-                                                <th><p align="center">Kelompok</p></th>
-                                                <th><p align="center">Nama Petugas</p></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                            <table class="table table-bordered table-hover" id="example1" width="100%" cellspacing="0">
+                                            <thead>
                                                 <tr>
-                                                    <td><p align="center"><?php echo $row->rek_baru; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->nm_pelanggan; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->unit_id; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->alamat; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->kelurahan; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->kecamatan; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->status; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_status; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->hasil_test; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_hasil_test; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->kelompok_id; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->petugas_id; ?></p></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                    <th><p align="center">Rekening Baru Pelanggan</p></th>
+                                                    <th><p align="center">Rekening Lama Pelanggan</p></th>
+                                                    <th><p align="center">Nama Pelanggan</p></th>
+                                                    <th><p align="center">Unit Pelayanan</p></th>
+                                                    <th><p align="center">Alamat Pelanggan</p></th>
+                                                    <th><p align="center">Kelurahan</p></th>
+                                                    <th><p align="center">Kecamatan</p></th>
+                                                    <th><p align="center">Status</p></th>
+                                                    <th><p align="center">Tanggal Status</p></th>
+                                                    <th><p align="center">Hasil Test Meteran</p></th>
+                                                    <th><p align="center">Tanggal Hasil Test</p></th>
+                                                    <th><p align="center">Kelompok</p></th>
+                                                    <th><p align="center">Nama Petugas</p></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td><p align="center"><?php echo $rek_baru; ?></p></td>
+                                                        <td><p align="center"><?php echo $rek_lama; ?></p></td>
+                                                        <td><p align="center"><?php echo $nm_pelanggan; ?></p></td>
+                                                        <td><p align="center"><?php echo $unit_nm; ?></p></td>
+                                                        <td><p align="center"><?php echo $alamat ?></p></td>
+                                                        <td><p align="center"><?php echo $kelurahan ?></p></td>
+                                                        <td><p align="center"><?php echo $kecamatan ?></p></td>
+                                                        <td><p align="center"><?php echo $status ?></p></td>
+                                                        <td><p align="center"><?php echo $tgl_status ?></p></td>
+                                                        <td><p align="center"><?php echo $hasil_test ?></p></td>
+                                                        <td><p align="center"><?php echo $tgl_hasil_test ?></p></td>
+                                                        <td><p align="center"><?php echo $kd_kelompok; ?>- <?php echo $nm_kelompok ?></p></td>
+                                                        <td><p align="center">No. Baru: <?php echo $no_petugas ?>-<?php echo $nm_petugas; ?> -
+                                                            <?php echo $no_petugas ?></p>
+                                                        </td>
+                                                    </tr>
+                                            </tbody>
+                                            </table>
                                         </div>
                                         <?php }?>
                                 </div>

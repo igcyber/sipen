@@ -10,8 +10,8 @@
             <main>
                 <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
                     <div class="container-fluid">
-                        <div class="page-header-content">
-                            <h1 class="page-header-title my-2">
+                        <div class="page-header-content my-4">
+                            <h1 class="page-header-title">
                                 <div class="page-header-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 <span>Beranda</span>
                             </h1>

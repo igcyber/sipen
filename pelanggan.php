@@ -1,10 +1,6 @@
 <?php
     $current_page = "Pelanggan";
 ?>
-<?php
-    require_once("includes/head.php");
-    require_once("includes/top-nav.php");
-?>
 
 <?php
     require_once("includes/head.php");
@@ -21,7 +17,7 @@
                     <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
                         <div class="container-fluid">
                             <div class="page-header-content d-flex align-items-center justify-content-between text-white">
-                                <h1 class="page-header-title my-2">
+                                <h1 class="page-header-title">
                                     <div class="page-header-icon"><i class="fas fa-user-tag"></i></div>
                                     <span>Daftar Pelanggan</span>
                                 </h1>
@@ -64,25 +60,44 @@
                                         <tbody>
                                             <?php
                                             $no=1;
-                                            $select=$pdo->prepare("SELECT * FROM pelanggan ORDER BY rek_baru ASC");
-                                            $select->execute();
-                                            while($row=$select->fetch(PDO::FETCH_OBJ)){
+                                            $sql=$pdo->prepare("SELECT * FROM pelanggan ORDER BY rek_baru ASC");
+                                            $sql->execute();
+                                            while($pelanggan = $sql->fetch(PDO::FETCH_ASSOC)){
+                                                $id = $pelanggan['id'];
+                                                $rek_baru = $pelanggan['rek_baru'];
+                                                $rek_lama = $pelanggan['rek_lama'];
+                                                $nm_pelanggan = $pelanggan['nm_pelanggan'];
+
+                                                //Mengambil Nama Wilayah Dari Tabel Unit
+                                                $unit_id = $pelanggan['unit_id'];
+                                                $sql_unit = "SELECT * FROM unit  WHERE id = :id";
+                                                $res_unit = $pdo->prepare($sql_unit);
+                                                $res_unit->execute([':id'=>$unit_id]);
+                                                $unit = $res_unit->fetch(PDO::FETCH_ASSOC);
+                                                $unit_nm = $unit['nm_wilayah'];
+
+
+                                                $alamat = $pelanggan['alamat'];
+                                                $status = $pelanggan['status'];
+                                                $tgl_status = $pelanggan['tgl_status'];
+                                                $hasil_test = $pelanggan['hasil_test'];
+                                                $tgl_hasil_test = $pelanggan['tgl_hasil_test'];
                                             ?>
                                                 <tr>
                                                     <td><p align="center"><?php echo $no++; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->rek_baru; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->nm_pelanggan; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->unit_id; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->alamat; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->status; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_status; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->hasil_test; ?></p></td>
-                                                    <td><p align="center"><?php echo $row->tgl_hasil_test; ?></p></td>                                                   
+                                                    <td><p align="center"><?php echo $rek_baru; ?></p></td>
+                                                    <td><p align="center"><?php echo $nm_pelanggan; ?></p></td>
+                                                    <td><p align="center"><?php echo $unit_nm; ?></p></td>
+                                                    <td><p align="center"><?php echo $alamat; ?></p></td>
+                                                    <td><p align="center"><?php echo $status; ?></p></td>
+                                                    <td><p align="center"><?php echo $tgl_status; ?></p></td>
+                                                    <td><p align="center"><?php echo $hasil_test; ?></p></td>
+                                                    <td><p align="center"><?php echo $tgl_hasil_test; ?></p></td>
                                                     <td>
                                                         <p align="center">
-                                                        <a href="ubah-petugas.php?id=<?php echo $row->id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
-                                                        <a href="pelanggan.php?id=<?php echo $row->id ?>"class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
-                                                        <a href="detail_pelanggan.php?id=<?php echo $row->id ?>"class="btn btn-red btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
+                                                        <a href="ubah-petugas.php?id=<?php echo $id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
+                                                        <a href="pelanggan.php?id=<?php echo $id ?>"class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
+                                                        <a href="detail_pelanggan.php?id=<?php echo $id ?>"class="btn btn-red btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
                                                         </p>
                                                     </td>
                                             </tr>
