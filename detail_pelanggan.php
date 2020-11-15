@@ -45,36 +45,36 @@
                                                 <div class="col-md-3">
                                                     <p><img src="foto_rumah/<?php echo $row->foto_rumah ?>" alt="Rumah Pelanggan" style="width: 220px; height: 250px;" ></p>
                                                         <label for="" >Nomor Rekening :   </label>
-                                                        <input type="text" placeholder="<?php echo $row->rek_baru ?>">
+                                                        <input type="text" value="<?php echo $row->rek_baru ?>" readonly>
 
                                                         <label for="" >Nama Pelanggan :</label>
-                                                        <input type="text" placeholder="<?php echo $row->nm_pelanggan ?>">                                              
+                                                        <input type="text" value="<?php echo $row->nm_pelanggan ?>" readonly>                                              
                                                 </div>
                                                     <div class="form-group col-6">
                                                         <form action="" >
                                                             
-                                                            <input type="text" style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->unit_id ?>">
+                                                            <input type="text" style="float:right; width: calc(100% - 200px);" value="<?php echo $row->unit_id ?>" readonly>
                                                             <label for="">Wilayah</label><br>
                                                             
-                                                            <input type="text" style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->alamat ?>">
+                                                            <input type="text" style="float:right; width: calc(100% - 200px);" value="<?php echo $row->alamat ?>" readonly>
                                                             <label for="" ">Alamat</label><br>
                                                             
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->kelurahan ?>">
+                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $row->kelurahan ?>" readonly>
                                                             <label for="">Kelurahan</label><br>
 
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->kecamatan ?>">
+                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $row->kecamatan ?>" readonly>
                                                             <label for="">Kecamatan</label><br>
 
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->kelompok_id ?>">
+                                                            <input type="text"style="float:right; width: calc(100% - 200px);"value="<?php echo $row->kelompok_id ?>" readonly>
                                                             <label for="">Nama Kelompok</label><br>
                                                             
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->status ?> /  <?php echo date("d F Y",strtotime($row->tgl_status)); ?>">
+                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $row->status ?> /  <?php echo date("d F Y",strtotime($row->tgl_status)); ?>" readonly>
                                                             <label for="">Status/Tanggal Status</label><br>
 
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->hasil_test ?> /  <?php echo date("d F Y",strtotime($row->tgl_hasil_test)); ?>">
+                                                            <input type="text"style="float:right; width: calc(100% - 200px);"value="<?php echo $row->hasil_test ?> /  <?php echo date("d F Y",strtotime($row->tgl_hasil_test)); ?>" readonly>
                                                             <label for="">Hasil Test/Tanggal Hasil Test</label><br>
 
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" placeholder="<?php echo $row->petugas_id ?>">
+                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $row->petugas_id ?>" readonly>
                                                             <label for="">Nama Petugas</label>
                                                         </form>
                                                     </div>
