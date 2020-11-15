@@ -1,22 +1,18 @@
-<?php require_once("includes/head.php"); ?>
-       <?php require_once("includes/top-nav.php"); ?>
+<?php $current_page = "Tambah Pelanggan";?>
 
-<?php 
-//  Settingan waktu indonesia
-date_default_timezone_set('Asia/Makassar');
-// Settingan waktu indonesia
-?>
+<?php require_once("includes/head.php"); ?>
+<?php require_once("includes/top-nav.php") ?>
 
 <!-- Hanya Angka -->
-<script>
-    function hanyaAngka(evt){
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode <48 || charCode > 57))
+        <script>
+            function hanyaAngka(evt){
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode <48 || charCode > 57))
 
-            return false;
-            return true;
-        }
-</script>
+                    return false;
+                    return true;
+                }
+		</script>
 <!-- Hanya Angka -->
 
 
@@ -38,7 +34,7 @@ date_default_timezone_set('Asia/Makassar');
         $petugas_id = $_POST['petugas_id'];
         $foto_rumah = $_FILES['foto_rumah']['name'];
         $foto_rumah_tmp = $_FILES['foto_rumah']['tmp_name'];
-        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}","$image_size >= 2048");
+        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}");
 
         $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
         VALUES(:rek_baru,:rek_lama,:nm_pelanggan,:unit_id,:alamat,:kelurahan,:kecamatan,:kelompok_id,:status,:tgl_status,:hasil_test,:tgl_hasil_test,:petugas_id,:foto_rumah)";
@@ -205,7 +201,6 @@ date_default_timezone_set('Asia/Makassar');
                                     <div class="form-group col-md-6">
                                         <label>Foto Rumah Pelanggan</label>
                                         <input type="file" class="form-control" name="foto_rumah">
-                                        <p>*max file 2mb</p>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Simpan</button>
