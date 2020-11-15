@@ -2,21 +2,21 @@
        <?php require_once("includes/top-nav.php"); ?>
 
 <?php 
-    //  Settingan waktu indonesia
-       date_default_timezone_set('Asia/Makassar');
-    // Settingan waktu indonesia
+//  Settingan waktu indonesia
+date_default_timezone_set('Asia/Makassar');
+// Settingan waktu indonesia
 ?>
 
 <!-- Hanya Angka -->
-        <script>
-            function hanyaAngka(evt){
-                var charCode = (evt.which) ? evt.which : event.keyCode
-                if (charCode > 31 && (charCode <48 || charCode > 57))
+<script>
+    function hanyaAngka(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode <48 || charCode > 57))
 
-                    return false;
-                    return true;
-                }
-		</script>
+            return false;
+            return true;
+        }
+</script>
 <!-- Hanya Angka -->
 
 
@@ -38,12 +38,8 @@
         $petugas_id = $_POST['petugas_id'];
         $foto_rumah = $_FILES['foto_rumah']['name'];
         $foto_rumah_tmp = $_FILES['foto_rumah']['tmp_name'];
-        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}","$image_size >= 2024");
+        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}","$image_size >= 2048");
 
-        // if ($image_size >= 2024) {
-        //     $message = 'Maaf, size tidak dapat lebih dari 20 MB. Silahkan upload ke googledrive atau media upload lainnya.'; 
-        //     echo '<script type="text/javascript">alert("'.$message.'");</script>'; 
-        // }
         $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
         VALUES(:rek_baru,:rek_lama,:nm_pelanggan,:unit_id,:alamat,:kelurahan,:kecamatan,:kelompok_id,:status,:tgl_status,:hasil_test,:tgl_hasil_test,:petugas_id,:foto_rumah)";
         $res = $pdo->prepare($sql);
