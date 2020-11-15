@@ -95,7 +95,7 @@
                                                     <td><p align="center"><?php echo date("d F Y",strtotime($tgl_hasil_test)); ?></p></td>
                                                     <td>
                                                         <p align="center">
-                                                        <a href="ubah-petugas.php?id=<?php echo $id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
+                                                        <a href="ubah-pelanggan.php?id=<?php echo $id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
                                                         <a href="pelanggan.php?id=<?php echo $id ?>"class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
                                                         <a href="detail_pelanggan.php?id=<?php echo $id ?>"class="btn btn-red btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
                                                         </p>
