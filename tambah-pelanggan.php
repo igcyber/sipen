@@ -34,6 +34,12 @@
         $petugas_id = $_POST['petugas_id'];
         $foto_rumah = $_FILES['foto_rumah']['name'];
         $foto_rumah_tmp = $_FILES['foto_rumah']['tmp_name'];
+        $image_size=$_FILES['foto_rumah']['size'];
+
+        if ($image_size >= 2097152) {
+            echo 'Maaf, size tidak dapat lebih dari 2 MB.'; 
+          }
+        else{
         move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}");
 
         $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
@@ -54,9 +60,9 @@
             ':kelompok_id' => $kelompok_id,
             ':petugas_id' => $petugas_id,
             ':foto_rumah' => $foto_rumah
-        ]);
+          ]);
         header("Location: pelanggan.php");
-    }
+    }}
 ?>
         <div id="layoutSidenav_content">
             <main>
@@ -81,19 +87,19 @@
                                     <div class="form-group col-md-6">
                                         <label for="post-title">Nomor Rekening Baru</label>
                                         <input class="form-control" type="text" placeholder="Nomor Rekening Baru Pelanggan"
-                                        name="rek_baru" onkeypress="return hanyaAngka(event)" required/>
+                                        name="rek_baru" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="post-title">Nomor Rekening Lama</label>
                                         <input class="form-control" type="text" placeholder="Nomor Rekening Lama Pelanggan"
-                                        name="rek_lama" onkeypress="return hanyaAngka(event)" required/>
+                                        name="rek_lama" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="post-title">Nama Lengkap Pelanggan</label>
                                         <input class="form-control" type="text" placeholder="Nama Lengkap Pelanggan Sesuai KTP"
-                                        name="nm_pelanggan" required/>
+                                        name="nm_pelanggan" autocomplete="off" required/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Unit Pelayanan</label>
@@ -117,17 +123,17 @@
 
                                 <div class="form-group">
                                     <label for="post-content">Alamat Lengkap</label>
-                                    <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap Pelanggan Sesuai KTP" rows="9"></textarea>
+                                    <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap Pelanggan Sesuai KTP" rows="9" autocomplete="off"></textarea>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Kelurahan</label>
-                                        <input class="form-control" type="text" name="kelurahan" placeholder="Nama Kelurahan" />
+                                        <input class="form-control" type="text" name="kelurahan" placeholder="Nama Kelurahan" autocomplete="off"/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Kecamatan</label>
-                                        <input class="form-control" type="text" name="kecamatan" placeholder="Nama Kecamatan" />
+                                        <input class="form-control" type="text" name="kecamatan" placeholder="Nama Kecamatan" autocomplete="off"/>
                                     </div>
                                 </div>
 
@@ -149,7 +155,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Hasil Test Meteran</label>
-                                        <input class="form-control" name="hasil_test" type="text" placeholder="Hasil Test Meter..." />
+                                        <input class="form-control" name="hasil_test" type="text" placeholder="Hasil Test Meter..." autocomplete="off"/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Tanggal Hasil Test</label>
@@ -200,7 +206,8 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Foto Rumah Pelanggan</label>
-                                        <input type="file" class="form-control" name="foto_rumah">
+                                        <input type="file" class="form-control" name="foto_rumah" accept="image/*">
+                                        <p>*Max size 2 MB</p>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Simpan</button>

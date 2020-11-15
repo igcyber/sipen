@@ -84,7 +84,7 @@
                                         <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <p><img src="foto_rumah/<?php echo $foto ?>" alt="Rumah Pelanggan" style="width: 220px; height: 250px;" ></p>
+                                                    <p><img src="foto_rumah/<?php echo $foto ?>" alt="Rumah Pelanggan" style="width: 290px; height: 270px;" ></p>
                                                         <label>Nomor Rekening :   </label>
                                                         <input type="text" value="<?php echo $rek_baru ?>" readonly>
 
