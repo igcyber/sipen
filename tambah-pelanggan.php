@@ -1,5 +1,9 @@
-<?php require_once("includes/head.php"); ?>
-       <?php require_once("includes/top-nav.php") ?>
+<?php
+    $current_page = "Tambah Pelanggan";
+    require_once("includes/head.php");
+    require_once("includes/top-nav.php") ;
+
+?>
 
 <!-- Hanya Angka -->
         <script>
@@ -30,30 +34,42 @@
         $tgl_hasil_test = $_POST['tgl_hasil_test'];
         $kelompok_id = $_POST['kelompok_id'];
         $petugas_id = $_POST['petugas_id'];
+
         $foto_rumah = $_FILES['foto_rumah']['name'];
         $foto_rumah_tmp = $_FILES['foto_rumah']['tmp_name'];
-        move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}");
+        $foto_rumah_size = $_FILES['foto_rumah']['size'];
+        $foto_rumah_ext=explode('.',$foto_rumah);
+        $foto_rumah_ext=strtolower(end($foto_rumah_ext));
 
-        $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
-        VALUES(:rek_baru,:rek_lama,:nm_pelanggan,:unit_id,:alamat,:kelurahan,:kecamatan,:kelompok_id,:status,:tgl_status,:hasil_test,:tgl_hasil_test,:petugas_id,:foto_rumah)";
-        $res = $pdo->prepare($sql);
-        $res->execute([
-            ':rek_baru' => $rek_baru,
-            ':rek_lama' => $rek_lama,
-            ':nm_pelanggan' => $nm_pelanggan,
-            ':unit_id' => $unit_id,
-            ':alamat' => $alamat,
-            ':kelurahan' => $kelurahan,
-            ':kecamatan' => $kecamatan,
-            ':status' => $status,
-            ':tgl_status' => $tgl_status,
-            ':hasil_test' => $hasil_test,
-            ':tgl_hasil_test' => $tgl_hasil_test,
-            ':kelompok_id' => $kelompok_id,
-            ':petugas_id' => $petugas_id,
-            ':foto_rumah' => $foto_rumah
-        ]);
-        header("Location: pelanggan.php");
+        if ($foto_rumah_ext=='jpg' || $foto_rumah_ext=='jpeg' || $foto_rumah_ext=='png' && $foto_rumah_size > 2097152) {
+
+            move_uploaded_file("{$foto_rumah_tmp}","foto_rumah/{$foto_rumah}");
+            $sql = "INSERT INTO pelanggan(rek_baru,rek_lama,nm_pelanggan,unit_id,alamat,kelurahan,kecamatan,kelompok_id,status,tgl_status,hasil_test,tgl_hasil_test,petugas_id,foto_rumah)
+            VALUES(:rek_baru,:rek_lama,:nm_pelanggan,:unit_id,:alamat,:kelurahan,:kecamatan,:kelompok_id,:status,:tgl_status,:hasil_test,:tgl_hasil_test,:petugas_id,:foto_rumah)";
+            $res = $pdo->prepare($sql);
+            $res->execute([
+                ':rek_baru' => $rek_baru,
+                ':rek_lama' => $rek_lama,
+                ':nm_pelanggan' => $nm_pelanggan,
+                ':unit_id' => $unit_id,
+                ':alamat' => $alamat,
+                ':kelurahan' => $kelurahan,
+                ':kecamatan' => $kecamatan,
+                ':status' => $status,
+                ':tgl_status' => $tgl_status,
+                ':hasil_test' => $hasil_test,
+                ':tgl_hasil_test' => $tgl_hasil_test,
+                ':kelompok_id' => $kelompok_id,
+                ':petugas_id' => $petugas_id,
+                ':foto_rumah' => $foto_rumah
+            ]);
+            header("Location: pelanggan.php");
+
+        }else {
+            $error = "Format harus jpeg, jpg, png dan tidak lebih dari 2Mb";
+        }
+
+
     }
 ?>
         <div id="layoutSidenav_content">
@@ -196,15 +212,22 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
+                                        <?php
+                                            if(isset($error)){
+                                                echo "<p class='alert alert-danger'>{$error}</p>";
+                                            }
+                                        ?>
                                         <label>Foto Rumah Pelanggan</label>
                                         <input type="file" class="form-control" name="foto_rumah">
                                     </div>
                                 </div>
-                                <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Simpan</button>
-                                <a href="pelanggan.php" class="btn btn-secondary">Kembali</a>
+                                <div align="center">
+                                    <button class="btn btn-primary mr-2 my-1" type="submit" name="submit">Simpan</button>
+                                    <a href="pelanggan.php" class="btn btn-secondary">Kembali</a>
+                                </div>
                             </form>
-                        </div>
+                        </div> <!--cardbody-->
                     </div>
                 </div>
                 <!--End Table-->
