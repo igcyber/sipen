@@ -39,7 +39,8 @@ if(isset($_SESSION['login']) || isset($_SESSION['role'])){
                                         $count = $stmt->rowCount();
                                         if($count == 0) {
                                             $error = "Salah Username";
-                                        }else if($count == 1){
+                                        }
+                                        else if($count == 1){
                                             $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                             $user_password = $user['password'];
                                             $nm_petugas = $user['nm_petugas'];
@@ -53,7 +54,7 @@ if(isset($_SESSION['login']) || isset($_SESSION['role'])){
                                                 $_SESSION['login'] = 'success';
                                                 header("Refresh:2;url=beranda.php");
                                             } else {
-                                                $error_password = "Salah Password";
+                                                $error = "Salah Password";
                                             }
                                         }
                                     }

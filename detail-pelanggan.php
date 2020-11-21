@@ -4,10 +4,7 @@
 <?php
     require_once("includes/head.php");
     require_once("includes/top-nav.php");
-?>
 
-<?php
-    error_reporting(0);
     $id = $_GET['id'];
     $delete = $pdo->prepare("DELETE FROM petugas WHERE id=".$id);
     $delete->execute();
@@ -20,18 +17,18 @@
                             <div class="page-header-content d-flex align-items-center justify-content-between text-white">
                                 <h1 class="page-header-title my-2">
                                     <div class="page-header-icon"><i class="fas fa-user-tag"></i></div>
-                                    <span>Detail Pelanggan</span>
+                                    <span>Daftar Pelanggan</span>
                                 </h1>
                                 <a href="index.php" title="Beranda" class="btn btn-white">
                                     <div class="page-header-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 </a>
-                            </div>                                
+                            </div>
                         </div>
                     </div>
                     <!--Table-->
                     <div class="container-fluid mt-n10">
 
-                        <div class="card mb-4">
+                    <div class="card mb-4">
                             <div class="card-body">
                                 <div class="datatable table-responsive">
                                 <?php
@@ -83,42 +80,63 @@
                                 ?>
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <p><img src="foto_rumah/<?php echo $foto ?>" alt="Rumah Pelanggan" style="width: 290px; height: 270px;" ></p>
-                                                        <label>Nomor Rekening :   </label>
-                                                        <input type="text" value="<?php echo $rek_baru ?>" readonly>
-
-                                                        <label>Nama Pelanggan :</label>
-                                                        <input type="text" value="<?php echo $nm_pelanggan ?>" readonly>                                              
+                                                <div class="col-md-4">
+                                                        <div class="form-row">
+                                                            <img src="foto_rumah/<?php echo $foto ?>" alt="Rumah Pelanggan" style="width: 290px; height: 270px; margin-bottom: 20px;" >
+                                                            <div class="form-group col-md-6">
+                                                                <label>Nomor Rekening</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $rek_baru ?>" readonly>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Nama Pelanggan</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $nm_pelanggan ?>" readonly>
+                                                            </div>
+                                                        </div>
                                                 </div>
-                                                    <div class="form-group col-6">
-                                                        <form action="">
-                                                            
-                                                            <input type="text" style="float:right; width: calc(100% - 200px);" value="<?php echo $unit_nm ?>" readonly>
-                                                            <label>Wilayah</label><br>
-                                                            
-                                                            <input type="text" style="float:right; width: calc(100% - 200px);" value="<?php echo $alamat ?>" readonly>
-                                                            <label>Alamat</label><br>
-                                                            
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $kelurahan ?>" readonly>
-                                                            <label>Kelurahan</label><br>
+                                                <div class="col-md-8">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Wilayah</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $unit_nm ?>" readonly>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Alamat Lengkap</label>
+                                                                <textarea class="form-control form-control-sm" readonly><?php echo $alamat ?></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Kelurahan</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $kelurahan ?>" readonly>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Kecamatan</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $kecamatan ?>" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Kelompok</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $kd_kelompok?> - <?php echo $nm_kelompok ?>" readonly>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Status/Tanggal Status</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $status ?> /  <?php echo date("d F Y",strtotime($tgl_status)); ?>" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Nomor & Nama Petugas</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $no_petugas ?> - <?php echo $nm_petugas ?>" readonly>
+                                                            </div>
 
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $kecamatan ?>" readonly>
-                                                            <label>Kecamatan</label><br>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Hasil Test/Tanggal Hasil Test</label>
+                                                                <input class="form-control form-control-sm" value="<?php echo $hasil_test ?> /  <?php echo date("d F Y",strtotime($tgl_hasil_test)); ?>" readonly>
+                                                            </div>
+                                                        </div>
 
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);"value="<?php echo $kd_kelompok ?> - <?php echo $nm_kelompok ?>" readonly>
-                                                            <label>Nama Kelompok</label><br>
-                                                            
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $status ?> /  <?php echo date("d F Y",strtotime($tgl_status)); ?>" readonly>
-                                                            <label>Status/Tanggal Status</label><br>
-
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);"value="<?php echo $hasil_test ?> /  <?php echo date("d F Y",strtotime($tgl_hasil_test)); ?>" readonly>
-                                                            <label>Hasil Test/Tanggal Hasil Test</label><br>
-
-                                                            <input type="text"style="float:right; width: calc(100% - 200px);" value="<?php echo $no_petugas ?> - <?php echo $nm_petugas ?>" readonly>
-                                                            <label>Nomor & Nama Petugas</label>
-                                                        </form>
-                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <?php }?>
@@ -126,6 +144,7 @@
                             </div>
                             <a href="pelanggan.php" class="btn btn-secondary">KEMBALI KE DAFTAR PELANGGAN</a>
                         </div>
+
 
                     </div>
                 </main>
@@ -141,4 +160,4 @@
     $('.datatab').DataTable();
   } );
 </script>
-<!-- datatable -->
+  <!-- datatable -->

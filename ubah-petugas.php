@@ -1,7 +1,5 @@
 <?php
-    $current_page = "Tambah Petugas";
-?>
-<?php
+    $current_page = "Tambah Data Petugas";
     require_once("includes/head.php");
     require_once("includes/top-nav.php");
 ?>
@@ -41,14 +39,8 @@ if (isset($_POST['ubah'])){
     $role=$_POST['role'];
 
     $hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
-    $update = $pdo->prepare("UPDATE petugas SET no_petugas=:no_petugas,
-                                                no_petugas_lama=:no_petugas_lama,
-                                                nm_petugas=:nm_petugas,
-                                                no_hp=:no_hp,
-                                                username=:username,
-                                                password=:password,
-                                                role=:role
-                            WHERE id=$id");
+    $update = $pdo->prepare("UPDATE petugas SET no_petugas=:no_petugas, no_petugas_lama=:no_petugas_lama, nm_petugas=:nm_petugas,
+    no_hp=:no_hp, username=:username, password=:password, role=:role WHERE id=$id");
     $update->bindParam(':no_petugas',$no_petugas);
     $update->bindParam(':no_petugas_lama',$no_petugas_lama);
     $update->bindParam(':nm_petugas',$nm_petugas);
@@ -120,7 +112,7 @@ if (isset($_POST['ubah'])){
                                             <label for="post-title">Password</label>
                                             <input class="form-control" type="password" placeholder="Password Baru..."
                                             name="password" required/>
-                                        </div>                                        
+                                        </div>
                                         <div class="form-group col-md-4">
                                             <label>Pilih Hak Akses</label>
                                             <select name="role" class="form-control">
