@@ -95,7 +95,7 @@
                                                     <td>
                                                         <div class="badge badge-<?php echo $status=='Aktif'?'success':'warning'; ?>"><?php echo $status; ?></div>
                                                     </td>
-                                                    <td><p align="center"><?php echo $tgl_status; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($tgl_status)); ?></p></td>
                                                     <td><p align="center"><?php echo $hasil_test; ?></p></td>
                                                     <td><p align="center"><?php echo date("d F Y",strtotime($tgl_hasil_test)); ?></p></td>
                                                     <td>

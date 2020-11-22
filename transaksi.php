@@ -7,7 +7,7 @@
 
     error_reporting(0);
     $id = $_GET['id'];
-    $delete = $pdo->prepare("DELETE FROM petugas WHERE id=".$id);
+    $delete = $pdo->prepare("DELETE FROM transaksi WHERE id=".$id);
     $delete->execute();
 ?>
 
@@ -41,11 +41,48 @@
                                     <table class="table table-bordered table-hover datatab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-
+                                                <th><p align="center">No</p></th>
+                                                <th><p align="center">Nama Pelanggan</p></th>
+                                                <th><p align="center">Nomor Rekening</p></th>
+                                                <th><p align="center">Periode</p></th>
+                                                <th><p align="center">Tanggal Catat</p></th>
+                                                <th><p align="center">Aksi</p></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            <?php
+                                            $no=1;
+                                            $sql=$pdo->prepare("SELECT * FROM transaksi");
+                                            $sql->execute();
+                                            while($transaksi=$sql->fetch(PDO::FETCH_ASSOC)){
+                                                $id= $transaksi['id'];
+                                                $periode = $transaksi['periode'];
+                                                $tgl_catat = $transaksi['tgl_catat'];
+                                                    
+                                                //Mengambil Nama & rek_baru Dari Tabel pelanggan
+                                                $pelanggan_id = $transaksi['pelanggan_id'];
+                                                $sql_pelanggan = "SELECT * FROM pelanggan WHERE id = :id";
+                                                $res_pelanggan = $pdo->prepare($sql_pelanggan);
+                                                $res_pelanggan->execute([':id'=>$pelanggan_id]);
+                                                $pelanggan = $res_pelanggan->fetch(PDO::FETCH_ASSOC);
+                                                $nm_pelanggan = $pelanggan['nm_pelanggan'];
+                                                $rek_baru = $pelanggan['rek_baru'];
+                                            ?>
+                                                <tr>
+                                                    <td><p align="center"><?php echo $no++; ?></p></td>
+                                                    <td><p align="center"><?php echo $nm_pelanggan; ?></p></td>
+                                                    <td><p align="center"><?php echo $rek_baru; ?></p></td>
+                                                    <td><p align="center"><?php echo $periode; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($tgl_catat)); ?></p></td>
+                                                    <td><p align="center">
+                                                        <a href="#.php?id=<?php echo $row->id ?>"class="btn btn-blue btn-sm btn-icon"><i class="fas fa-pencil-alt"></i></a>
+                                                        <a href="transaksi.php?id=<?php echo $id ?>"
+                                                        class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
+                                                        <a href="detail-transaksi.php?id=<?php echo $id ?>"class="btn btn-success btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            <?php }?>
                                         </tbody>
                                     </table>
                                 </div>
