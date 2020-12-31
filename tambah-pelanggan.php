@@ -82,6 +82,14 @@
                                 <span>Tambah Pelanggan</span>
                             </h1>
                         </div>
+                        <a href="upload-pelanggan.php" title="Upload Data Pelanggan Baru" class="btn btn-white my-2">
+                            <div class="page-header-icon"><i class="fa fa-upload"></i></div>
+                        </a>
+                        <a href="unduh-data.php" title="Download Data Excel" class="btn btn-white my-2">
+                            <div class="page-header-icon"><i class="fa fa-download"></i></div>
+                        </a>
+                        </div>
+
                     </div>
                 </div>
 

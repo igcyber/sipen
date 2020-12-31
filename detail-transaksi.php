@@ -28,9 +28,10 @@
                                 <div class="datatable table-responsive">
                                 <?php
                                         $no=1;
-                                        $id=$_GET['id'];
+                                        $id=$_GET['id'];    
                                         $sql=$pdo->prepare("SELECT * FROM transaksi WHERE id=$id");
                                         $sql->execute();
+                                        
                                         while($transaksi = $sql->fetch(PDO::FETCH_ASSOC)){
                                             $periode = $transaksi['periode'];
                                             $tgl_catat = $transaksi['tgl_catat'];

@@ -79,6 +79,7 @@
                                                         <a href="transaksi.php?id=<?php echo $id ?>"
                                                         class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
                                                         <a href="detail-transaksi.php?id=<?php echo $id ?>"class="btn btn-success btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
+                                                        <a class='btn btn-danger btn-sm' href='buatQRCode.php?id=<?php echo $id ?>&periode=<?php echo $periode ?>'>Buat Kode QR</a>
                                                         </p>
                                                     </td>
                                                 </tr>
