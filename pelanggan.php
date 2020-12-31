@@ -45,7 +45,7 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="datatable table-responsive">
-                                    <table class="table table-bordered table-hover" id="example1" width="100%" cellspacing="0">
+                                    <table class="table table-bordered table-hover datatab" id="example1" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th><p align="center">No</p></th></p>
@@ -95,13 +95,13 @@
                                                     <td>
                                                         <div class="badge badge-<?php echo $status=='Aktif'?'success':'warning'; ?>"><?php echo $status; ?></div>
                                                     </td>
-                                                    <td><p align="center"><?php echo $tgl_status; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($tgl_status)); ?></p></td>
                                                     <td><p align="center"><?php echo $hasil_test; ?></p></td>
-                                                    <td><p align="center"><?php echo $tgl_hasil_test; ?></p></td>
+                                                    <td><p align="center"><?php echo date("d F Y",strtotime($tgl_hasil_test)); ?></p></td>
                                                     <td>
                                                         <p align="center">
                                                         <a href="ubah-pelanggan.php?id=<?php echo $id ?>"class="btn btn-primary btn-icon btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                                        <a href="pelanggan.php?id=<?php echo $id ?>"class="btn btn-danger btn-icon btn-sm"><i class="fas fa-trash"></i></a>
+                                                        <a href="pelanggan.php?id=<?php echo $id ?>"class="btn btn-danger btn-icon btn-sm btn-delete"><i class="fas fa-trash"></i></a>
                                                         <a href="detail-pelanggan.php?id=<?php echo $id ?>"class="btn btn-success btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
                                                         </p>
                                                     </td>
@@ -147,7 +147,7 @@
 <script src="js/dataTables.bootstrap4.js"></script>
 <script>
   $(document).ready(function() {
-    $('.datat').DataTable();
+    $('.datatab').DataTable();
   } );
 </script>
   <!-- datatable -->

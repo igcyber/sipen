@@ -82,6 +82,14 @@
                                 <span>Tambah Pelanggan</span>
                             </h1>
                         </div>
+                        <a href="upload-pelanggan.php" title="Upload Data Pelanggan Baru" class="btn btn-white my-2">
+                            <div class="page-header-icon"><i class="fa fa-upload"></i></div>
+                        </a>
+                        <a href="unduh-data.php" title="Download Data Excel" class="btn btn-white my-2">
+                            <div class="page-header-icon"><i class="fa fa-download"></i></div>
+                        </a>
+                        </div>
+
                     </div>
                 </div>
 
@@ -95,32 +103,33 @@
                                     <div class="form-group col-md-6">
                                         <label for="post-title">Nomor Rekening Baru</label>
                                         <input class="form-control" type="text" placeholder="Nomor Rekening Baru Pelanggan"
-                                        name="rek_baru" onkeypress="return hanyaAngka(event)" required/>
+                                        name="rek_baru" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="post-title">Nomor Rekening Lama</label>
                                         <input class="form-control" type="text" placeholder="Nomor Rekening Lama Pelanggan"
-                                        name="rek_lama" onkeypress="return hanyaAngka(event)" required/>
+                                        name="rek_lama" onkeypress="return hanyaAngka(event)" autocomplete="off" required/>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="post-title">Nama Lengkap Pelanggan</label>
                                         <input class="form-control" type="text" placeholder="Nama Lengkap Pelanggan Sesuai KTP"
-                                        name="nm_pelanggan" required/>
+                                        name="nm_pelanggan" autocomplete="off" required/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Unit Pelayanan</label>
                                         <select class="form-control" name="unit_id">
                                             <option disabled selected>Pilih Wilayah</option>
                                         <?php
+                                            $no=1;
                                             $sql =  "SELECT * FROM unit";
                                             $res = $pdo->prepare($sql);
                                             $res->execute();
                                             while($unit = $res->fetch(PDO::FETCH_ASSOC)) {
                                         ?>
                                             <option value="<?php echo $unit['id']; ?>">
-                                                <?php echo $unit['nm_wilayah']; ?>
+                                            <?php echo $no++; ?>. <?php echo $unit['nm_wilayah']; ?>
                                             </option>
                                         <?php
                                             }
@@ -131,17 +140,17 @@
 
                                 <div class="form-group">
                                     <label for="post-content">Alamat Lengkap</label>
-                                    <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap Pelanggan Sesuai KTP" rows="9"></textarea>
+                                    <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap Pelanggan Sesuai KTP" rows="9" autocomplete="off"></textarea>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Kelurahan</label>
-                                        <input class="form-control" type="text" name="kelurahan" placeholder="Nama Kelurahan" />
+                                        <input class="form-control" type="text" name="kelurahan" placeholder="Nama Kelurahan" autocomplete="off"/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Kecamatan</label>
-                                        <input class="form-control" type="text" name="kecamatan" placeholder="Nama Kecamatan" />
+                                        <input class="form-control" type="text" name="kecamatan" placeholder="Nama Kecamatan" autocomplete="off"/>
                                     </div>
                                 </div>
 
@@ -163,7 +172,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Hasil Test Meteran</label>
-                                        <input class="form-control" name="hasil_test" type="text" placeholder="Hasil Test Meter..." />
+                                        <input class="form-control" name="hasil_test" type="text" placeholder="Hasil Test Meter..." autocomplete="off"/>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Tanggal Hasil Test</label>
@@ -178,13 +187,14 @@
                                         <select name="kelompok_id" class="form-control">
                                         <option disabled selected>Pilih Kelompok</option>
                                             <?php
+                                            $no=1;
                                             $sql =  "SELECT * FROM kelompok";
                                             $res = $pdo->prepare($sql);
                                             $res->execute();
                                             while($kelompok = $res->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
                                                 <option value="<?php echo $kelompok['id']; ?>">
-                                                    <?php echo $kelompok['kd_kelompok'] ?> - <?php echo $kelompok['nm_kelompok']; ?>
+                                                <?php echo $no++; ?>. <?php echo $kelompok['kd_kelompok'] ?> - <?php echo $kelompok['nm_kelompok']; ?>
                                                 </option>
                                             <?php
                                                 }
@@ -219,7 +229,8 @@
                                             }
                                         ?>
                                         <label>Foto Rumah Pelanggan</label>
-                                        <input type="file" class="form-control" name="foto_rumah">
+                                        <input type="file" class="form-control" name="foto_rumah" accept="image/*">
+                                        <p>*Max size 2 MB</p>
                                     </div>
                                 </div>
                                 <div align="center">
