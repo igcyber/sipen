@@ -82,12 +82,6 @@
                                 <span>Tambah Pelanggan</span>
                             </h1>
                         </div>
-                        <a href="upload-pelanggan.php" title="Upload Data Pelanggan Baru" class="btn btn-white my-2">
-                            <div class="page-header-icon"><i class="fa fa-upload"></i></div>
-                        </a>
-                        <a href="unduh-data.php" title="Download Data Excel" class="btn btn-white my-2">
-                            <div class="page-header-icon"><i class="fa fa-download"></i></div>
-                        </a>
                         </div>
 
                     </div>
@@ -156,11 +150,11 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label>Status</label>
+                                        <label>QrCode</label>
                                         <select class="form-control" name="status">
-                                            <option disabled selected>Pilih Status</option>
-                                            <option value="Aktif">Aktif</option>
-                                            <option value="Tidak Aktif">Tidak Aktif</option>
+                                            <option disabled selected>Pilih Status QrCode</option>
+                                            <option value="Tersedia">Tersedia</option>
+                                            <option value="Tidak Tersedia">Tidak Tersedia</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
