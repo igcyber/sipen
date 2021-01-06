@@ -53,7 +53,7 @@
                                                 <th><p align="center">Nama Pelanggan</p></th>
                                                 <th><p align="center">Unit Pelayanan</p></th>
                                                 <th><p align="center">Alamat Pelanggan</p></th>
-                                                <th><p align="center">Status</p></th>
+                                                <th><p align="center">QrCode</p></th>
                                                 <th><p align="center">Tanggal Status</p></th>
                                                 <th><p align="center">Hasil Test Meteran</p></th>
                                                 <th><p align="center">Tanggal Hasil Test</p></th>
