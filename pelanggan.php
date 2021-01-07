@@ -93,7 +93,7 @@
                                                     <td><p align="center"><?php echo $unit_nm; ?></p></td>
                                                     <td><p align="center"><?php echo $alamat; ?></p></td>
                                                     <td>
-                                                        <div class="badge badge-<?php echo $status=='Aktif'?'success':'warning'; ?>"><?php echo $status; ?></div>
+                                                        <div class="badge badge-<?php echo $status=='Tersedia'?'success':'warning'; ?>"><?php echo $status; ?></div>
                                                     </td>
                                                     <td><p align="center"><?php echo date("d F Y",strtotime($tgl_status)); ?></p></td>
                                                     <td><p align="center"><?php echo $hasil_test; ?></p></td>
@@ -103,6 +103,7 @@
                                                         <a href="ubah-pelanggan.php?id=<?php echo $id ?>"class="btn btn-primary btn-icon btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                                         <a href="pelanggan.php?id=<?php echo $id ?>"class="btn btn-danger btn-icon btn-sm btn-delete"><i class="fas fa-trash"></i></a>
                                                         <a href="detail-pelanggan.php?id=<?php echo $id ?>"class="btn btn-success btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
+                                                        
                                                         </p>
                                                     </td>
                                             </tr>

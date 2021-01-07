@@ -202,8 +202,8 @@
                                 <label>Status</label>
                                 <select class="form-control" name="status">
                                     <option disabled selected>Pilih Status</option>
-                                    <option value="Aktif" <?php echo $status_db == "Aktif"?"selected":"";?>>Aktif</option>
-                                    <option value="Tidak Aktif" <?php echo $status_db != "Aktif"?"selected":"";?>>Tidak Aktif</option>
+                                    <option value="Tersedia" <?php echo $status_db == "Tersedia"?"selected":"";?>>Tersedia</option>
+                                    <option value="Tidak Tersedia" <?php echo $status_db != "Tersedia"?"selected":"";?>>Tidak Tersedia</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
