@@ -5,4 +5,4 @@
 // while($transaksi=$sql->fetch(PDO::FETCH_ASSOC))
 ?>
 
-<img src="temp/<?php echo $tgl_bayar['tgl_bayar'].".png"; ?>">
+<img src="temp/<?php echo $id['id'].".png"; ?>">

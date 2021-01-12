@@ -17,7 +17,7 @@ if(isset($_GET['tgl_bayar']) && $_GET['tgl_bayar'] !=''){
     }
 
     #parameter inputan
-    $isi_teks = $tgl_bayar;
+    $isi_teks = "Tanggal Bayar : $tgl_bayar";
     $namafile = $nm_pelanggan.".png";
     $quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
     $ukuran = 5; //batasan 1 paling kecil, 10 paling besar

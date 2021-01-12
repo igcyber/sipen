@@ -55,7 +55,7 @@
         resultFunction: function(result) {
             //$('.hasilscan').append($('<input name="noijazah" value=' + result.code + ' readonly><input type="submit" value="Cek"/>'));
            // $.post("../cek.php", { noijazah: result.code} );
-            var redirect = '../detail-transaksi.php';
+            var redirect = '../transaksi.php';
             $.redirectPost(redirect, {noijazah: result.code});
         }
     };

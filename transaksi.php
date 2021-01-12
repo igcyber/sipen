@@ -83,7 +83,8 @@
                                                         class="btn btn-red btn-sm btn-icon btn-delete"><i class="fas fa-trash"></i></a>
                                                         <a href="detail-transaksi.php?id=<?php echo $id ?>"class="btn btn-success btn-sm btn-icon btn-detail"><i class="fas fa-info"></i></a>
                                                         <a href="buatQrCode.php?nm_pelanggan=<?php echo $nm_pelanggan ?>&tgl_bayar=<?php echo $tgl_bayar ?>"class="btn btn-success btn-sm btn-danger">Buat Qr</a>
-                                                        <a href="cetak.php<?php echo $id ?>"target="_blank" class="btn btn-success btn-sm btn-print">Cetak</a>
+                                                        <a href="temp/<?php echo $nm_pelanggan.".png"; ?>" target="_blank" class="btn btn-success btn-sm btn-print">Cetak</a>
+                                                        <a href="temp/<?php echo $nm_pelanggan.".png"; ?>" target="_blank" class="btn btn-success btn-sm btn-print" download><i class="fa fa-download"></i></a>
                                                         </p>
                                                     </td>
                                                 </tr>
