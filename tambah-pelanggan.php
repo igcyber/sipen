@@ -150,9 +150,9 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label>QrCode</label>
+                                        <label>Barcode</label>
                                         <select class="form-control" name="status">
-                                            <option disabled selected>Pilih Status QrCode</option>
+                                            <option disabled selected>Pilih Status Barcode</option>
                                             <option value="Tersedia">Tersedia</option>
                                             <option value="Tidak Tersedia">Tidak Tersedia</option>
                                         </select>

@@ -83,6 +83,9 @@
                                                 <div class="col-md-4">
                                                         <div class="form-row">
                                                             <img src="foto_rumah/<?php echo $foto ?>" alt="Rumah Pelanggan" style="width: 290px; height: 270px; margin-bottom: 20px;" >
+                                                            <div class="form-group col-md-12">
+                                                                <a href="foto_rumah/<?php echo $foto ?>" target="_blank" class="btn btn-primary btn-sm">Lihat Foto</a>
+                                                            </div>
                                                             <div class="form-group col-md-6">
                                                                 <label>Nomor Rekening</label>
                                                                 <input class="form-control form-control-sm" value="<?php echo $rek_baru ?>" readonly>
@@ -120,7 +123,7 @@
                                                                 <input class="form-control form-control-sm" value="<?php echo $kd_kelompok?> - <?php echo $nm_kelompok ?>" readonly>
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label>Status/Tanggal Status</label>
+                                                                <label>Barcode/Tanggal Status</label>
                                                                 <input class="form-control form-control-sm" value="<?php echo $status ?> /  <?php echo date("d F Y",strtotime($tgl_status)); ?>" readonly>
                                                             </div>
                                                         </div>

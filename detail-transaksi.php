@@ -96,6 +96,9 @@
                                                 <div class="col-md-4">
                                                         <div class="form-row">
                                                             <img src="foto_rumah/<?php echo $foto ?>" alt="Meteran Pelanggan" style="width: 290px; height: 270px; margin-bottom: 20px;" >
+                                                            <div class="form-group col-md-12">
+                                                                <a href="foto_rumah/<?php echo $foto ?>" target="_blank" class="btn btn-primary btn-sm">Lihat Foto</a>
+                                                            </div>
                                                             <div class="form-group col-md-6">
                                                                 <label>Tanggal Catat</label>
                                                                 <input class="form-control form-control-sm" value="<?php echo date("d F Y",strtotime($tgl_catat)); ?>" readonly>
